@@ -1,0 +1,28 @@
+{% extends 'shop/basic.html' %}
+{% load course_custom_tags %}
+{% block title%} Checkout - My Awesome Cart{% endblock %}
+{% block body %}
+   
+    <div class="container my-4">
+    {% for uc in user_courses %}
+    <div class="card mb-3" style="max-width: 1060px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/media/{{uc.product.image}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{uc.product.product_name}}</h5>
+          <p class="card-text">{{uc.product.desc|slice:"0:900"}}</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          <a href="/shop/delete/{{uc.id}}"><button name="product" class="btn btn-primary cart">Remove Item</button></a>
+        </div>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}
+

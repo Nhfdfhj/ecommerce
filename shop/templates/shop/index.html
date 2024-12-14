@@ -1,0 +1,40 @@
+{% extends 'shop/basic.html' %}
+{% load course_custom_tags %}
+{% block body %}
+{% load static %}
+<div class="container-fluid"> 
+    </div>
+    <div class="container-fluid"> 
+    <div class="row mx-auto"> 
+        {% for product, range, nSlides in allProds %}
+        <h5 class="container-fluid rounded mt-2 p-2 bg-dark text-light">Deals On {{product.0.category}} - Recommended Items</h5>
+                        {% for i in product %}
+                        
+                            <div class="card mx-auto mb-1 mt-3" style="width: 18rem;">
+                              
+                            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                            {% is_enrolled request i as enrolled %}
+                            {% if enrolled %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{i.product_name|slice:"0:60"}}</h5>
+                                <p class="card-text">{{i.desc|slice:"0:51"}}...</p>
+                                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                            {% else %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{i.product_name|slice:"0:60"}}</h5>
+                                <p class="card-text">{{i.desc|slice:"0:51"}}...</p>
+                                <span id="divpr{{i.id}}" class="divpr">
+                                    <a href="/shop/checkout/{{i.id}}"><button name="product" class="btn btn-primary cart" name="add-cart" id="add-cart">Add to Cart</button></a>
+                                </span>
+                                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                            {% endif%}
+                            </div>
+                        {% endfor %}
+    {% endfor %}
+    </div> 
+    </div> 
+    </main>
+      </body>
+    {% endblock %}

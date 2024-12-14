@@ -1,0 +1,33 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Contact Us - My Awesome Cart{% endblock %}
+{% block body %}
+<div class="container-fluid my-3">
+    <h3 class="container-fluid rounded mt-2 mr-2 pl-4 p-2 bg-dark text-light">𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐔𝐬</h3>
+    <form action="/shop/contact/" class="card-body mx-auto" method="post">{% csrf_token %}
+  <div class="form-group">
+    <label for="name">𝐍𝐚𝐦𝐞</label>
+    <input type="text" class="form-control" id="name" name='name' placeholder="Enter Your Name">
+  </div>
+  <div class="form-group">
+    <label for="name">𝐄𝐦𝐚𝐢𝐥</label>
+    <input type="email" class="form-control" id="email" name='email' placeholder="Enter Your Email">
+  </div>
+
+    <div class="form-group">
+    <label for="name">𝐏𝐡𝐨𝐧𝐞</label>
+    <input type="tel" class="form-control" id="phone" name='phone' placeholder="Enter Your Phone Number">
+  </div>
+
+   <div class="form-group">
+    <label for="desc">𝐇𝐨𝐰 𝐌𝐚𝐲 𝐖𝐞 𝐇𝐞𝐥𝐩 𝐘𝐨𝐮? </label>
+    <textarea class="form-control" id="desc" name='desc' rows="3"></textarea>
+  </div>
+        <button type="submit" class="btn btn-success">𝐒𝐮𝐛𝐦𝐢𝐭</button>
+</form>
+
+
+
+</div>
+{% endblock %}
+
